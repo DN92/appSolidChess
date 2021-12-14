@@ -1,0 +1,7 @@
+.chessBoard {
+  display: grid;
+  place-content: center;
+  height: 100vh;
+  background-color: rgb(89, 101, 110);
+}
+
