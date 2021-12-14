@@ -60,6 +60,11 @@ const Chessboard = (props) => {
     }
   }
 
+  function handleAskForTakeBack() {
+    chess.undo()
+    setCurrentFen(chess.fen())
+  }
+
 
 
   function handleMove(action){
@@ -151,11 +156,12 @@ const Chessboard = (props) => {
         }
       </div>
       {/* buttons for ask for TakeBack */}
+      {/* This will just work on click for now. Later Change to ask the opponent */}
       <div>
-        {
-          <button onClick={askForTakeBack}> Ask For Take Back</button>
-
-        }
+        {/* { askForTB ? */}
+        <button onClick={handleAskForTakeBack}> Ask For Take Back</button>
+        {/* : <button>Cancel</button> */}
+        {/* } */}
       </div>
 
     </div>
