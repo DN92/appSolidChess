@@ -1,7 +1,41 @@
-.chessBoard {
-  display: grid;
-  place-content: center;
-  height: 100vh;
+body {
   background-color: rgb(89, 101, 110);
 }
 
+
+.megaDiv {
+  display: flex;
+  align-items: center;
+  place-content: center;
+  /* width: 100vh; */
+  height: 80vh;
+}
+
+.dataAndChat {
+  display:flex;
+  flex-direction: column;
+  padding-right: 25px;
+  width: 250px;
+  height: 600px;
+  justify-content: space-between;
+  /* margin-bottom: 450px */
+}
+
+.metaData {
+  height: 125px;
+  border: solid black 2px;
+}
+
+.chatBox {
+  height: 425px;
+  border: solid black 2px;
+}
+
+.boardContainer {
+
+}
+
+.gameActions {
+ margin-bottom: 450px;
+ padding: 50px;
+}
