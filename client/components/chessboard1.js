@@ -26,6 +26,7 @@ const Chessboard = (props) => {
   const [askedforTakeBackThisMove, setTakeBackStatus] = useState(false)
   const [drawOffered, setDrawOffered] = useState(false)
   const [recentDrawOffer, setRecentDrawOffer] = useState(false)
+  const [gameHistory, setGameHistory] = useState(chess.history())
 
   useEffect(() => {
     if(draw) {
@@ -147,10 +148,17 @@ const Chessboard = (props) => {
       <div className='dataAndChat'>
         <div className='metaData'>
           {winner
-          ? `${winner} Wins!`
-          : null
+          ? <div>
+              <p >{playingWhite}</p>
+              <p >{playingBlack}</p>
+              <p >{winner} Wins!</p>
+            </div>
+          : <div>
+              <p >{playingWhite}</p>
+              <p >{playingBlack}</p>
+            </div>
           }
-          <p> Game State: {gameStatus}</p>
+          <p > Game State: {gameStatus}</p>
           {!chess.game_over()
           ? <p> {toMove} to move </p>
           : <p>{gameEndedBy}</p>
@@ -159,46 +167,53 @@ const Chessboard = (props) => {
         <div className="chatBox">
           <p>Chat Room</p>
         </div>
-
       </div>
+
       <div className="boardContainer">
         <ChessBoard className="chessBoard" id="chessBoard1" width={600} position={currentFen} onDrop={
           // (e)=> console.log(e)
           (action) => handleMove(action)
         }/>
       </div>
-      <div className="gameActions">
-        {/* buttons for reseting the board */}
-        <div>
-          {resetWasClicked
-          ? <button onClick={confirmReset}> Are you Sure ?</button>
-          : <button onClick={handleResetButton}> Reset Game</button>
-          }
+
+      <div className="gameLogAndActions">
+        <div className="gameLog">
+          {chess.history()}
         </div>
-        {/* buttons for resigning */}
-        <div>
-          {resignWasClicked
-          ? <button onClick={confirmResign}> Confirm Resignation</button>
-          : <button onClick={handleResignButton}> Resign </button>
-          }
-        </div>
-        {/* buttons for ask for TakeBack */}
-        {/* This will just work on click for now. Later Change to ask the opponent */}
-        <div>
-          {/* { askForTB ? */}
-          <button onClick={handleAskForTakeBack}> Ask For Take Back</button>
-          {/* : <button>Cancel</button> */}
-          {/* } */}
-        </div>
-        {/* offer draw */}
-        <div>
-          {!drawOffered
-          ? <button onClick={handleDrawOffer}>Offer Draw</button>
-          : <div>
-              <button>Accept Draw Offer</button>
-              <button>Decline Draw Offer</button>
-            </div>
-          }
+
+        <div className="gameActions">
+          {/* buttons for reseting the board */}
+          <div>
+            {resetWasClicked
+            ? <button onClick={confirmReset}> Are you Sure ?</button>
+            : <button onClick={handleResetButton}> Reset Game</button>
+            }
+          </div>
+          {/* buttons for resigning */}
+          <div>
+            {resignWasClicked
+            ? <button onClick={confirmResign}> Confirm Resignation</button>
+            : <button onClick={handleResignButton}> Resign </button>
+            }
+          </div>
+          {/* buttons for ask for TakeBack */}
+          {/* This will just work on click for now. Later Change to ask the opponent */}
+          <div>
+            {/* { askForTB ? */}
+            <button onClick={handleAskForTakeBack}> Ask For Take Back</button>
+            {/* : <button>Cancel</button> */}
+            {/* } */}
+          </div>
+          {/* offer draw */}
+          <div>
+            {!drawOffered
+            ? <button onClick={handleDrawOffer}>Offer Draw</button>
+            : <div>
+                <button>Accept Draw Offer</button>
+                <button>Decline Draw Offer</button>
+              </div>
+            }
+          </div>
         </div>
       </div>
 

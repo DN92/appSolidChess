@@ -12,18 +12,26 @@ body {
 }
 
 .dataAndChat {
-  display:flex;
+  display: flex;
   flex-direction: column;
   padding-right: 25px;
   width: 250px;
   height: 600px;
   justify-content: space-between;
   /* margin-bottom: 450px */
+  border: solid black 2px;
 }
 
 .metaData {
   height: 125px;
   border: solid black 2px;
+  padding: 8px;
+  padding-top: 0px;
+  background-color: blueviolet;
+}
+
+.metaData p {
+  margin: 3px;
 }
 
 .chatBox {
@@ -31,11 +39,22 @@ body {
   border: solid black 2px;
 }
 
-.boardContainer {
+.gameLogAndActions {
+  width: 250px;
+  height: 600px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border: solid black 2px;
+}
 
+.gameLog {
+  flex: 7;
+  border: solid black 2px;
 }
 
 .gameActions {
- margin-bottom: 450px;
- padding: 50px;
+  flex: 2;
+  padding: 50px;
+  border: solid black 2px;
 }
