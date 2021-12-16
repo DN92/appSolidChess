@@ -18,8 +18,6 @@ body {
   width: 250px;
   height: 600px;
   justify-content: space-between;
-  /* margin-bottom: 450px */
-  border: solid black 2px;
 }
 
 .metaData {
@@ -47,7 +45,6 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  border: solid black 2px;
 }
 
 .gameLog {
