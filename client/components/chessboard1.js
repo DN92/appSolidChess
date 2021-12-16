@@ -1,10 +1,10 @@
 import React, {useState, useEffect}  from 'react'
 import ChessBoard from 'chessboardjsx'
-import Chess, { ChessInstance, ShortMove } from 'chess.js'
+import chess from '../../util/chessGame'
+import {upOne, getCounter} from '../../util/utilCounter'
 
 
-const chess = new Chess()
-let counter = 0;
+
 
 const Chessboard = (props) => {
 
@@ -92,6 +92,18 @@ const Chessboard = (props) => {
     }
   }
 
+  function handleAcceptDraw() {
+    setDrawOffered(false)
+    setDraw(true)
+    setGameStatus("Draw!")
+    setGameEndedBy("Draw Offer Accepted")
+  }
+
+  function handleDeclineDraw() {
+    setDrawOffered(false)
+    window.alert("Draw Offer Declined")
+  }
+
 
 
   function handleMove(action){
@@ -110,10 +122,12 @@ const Chessboard = (props) => {
 
       // check for valid move made
       if(loggedMove) {
+        // log move
+        setGameHistory(chess.history())
         // reset takeBackstatus
         setTakeBackStatus(false)
-        setGameHistory(chess.history())
-
+        // reset recent draw offer status
+        setRecentDrawOffer(false)
         // set new board position for UI
         setCurrentFen(chess.fen())
         // check for winner
@@ -140,7 +154,7 @@ const Chessboard = (props) => {
           setDraw(true)
           setGameEndedBy("Stalemate!")
         }
-        // change to move
+        // change visual element for whose turn it is
 
         switch (chess.turn()) {
           case 'w':
@@ -190,11 +204,11 @@ const Chessboard = (props) => {
 
       <div className="gameLogAndActions">
         <div className="gameLog">
-          <h4>Game Notation</h4>
+        <h4>Game Notation</h4>
           <ol>
             {log.map((movePair)=>{
-              counter++
-              return <li key={counter}>{movePair}   </li>
+              upOne()
+              return <li key={getCounter()}>{movePair}   </li>
             })}
           </ol>
         </div>
@@ -213,8 +227,8 @@ const Chessboard = (props) => {
             {!drawOffered
             ? <button onClick={handleDrawOffer}>Offer Draw</button>
             : <div>
-                <button>Accept Draw Offer</button>
-                <button>Decline Draw Offer</button>
+                <button onClick={handleAcceptDraw}>Accept Draw Offer</button>
+                <button onClick={handleDeclineDraw}>Decline Draw Offer</button>
               </div>
             }
           </div>
