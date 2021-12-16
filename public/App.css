@@ -1,5 +1,5 @@
 body {
-  background-color: rgb(89, 101, 110);
+  background-color: rgba(51, 114, 165, 0.568);
 }
 
 
@@ -27,7 +27,7 @@ body {
   border: solid black 2px;
   padding: 8px;
   padding-top: 0px;
-  background-color: blueviolet;
+  background-color: rgb(185, 230, 212);
 }
 
 .metaData p {
@@ -37,9 +37,11 @@ body {
 .chatBox {
   height: 425px;
   border: solid black 2px;
+  background-color: rgb(185, 230, 212);
 }
 
 .gameLogAndActions {
+  padding-left: 25px;
   width: 250px;
   height: 600px;
   display: flex;
@@ -51,10 +53,48 @@ body {
 .gameLog {
   flex: 7;
   border: solid black 2px;
+  background-color: rgb(185, 230, 212);
+  margin-bottom: 50px
+}
+
+.gameLog ol {
+
+}
+
+.gameLog ol li {
+  /* align-items: center; */
+  /* align-content: center; */
+  text-align: left;
+  padding-left: 30px;
 }
 
 .gameActions {
   flex: 2;
-  padding: 50px;
   border: solid black 2px;
+  background-color: rgb(185, 230, 212);
+  align-content: center;
+}
+
+h4 {
+  padding-left: 17px;
+}
+
+.gameLog h4 {
+  text-align: center;
+  padding-right: 30px;
+}
+
+.gA {
+  margin-left: 33px;
+}
+
+button {
+  background-color: #d4a2eb; /* Green */
+  border: solid black 1px;
+  color: white;
+  margin: 10px;
+  font-size: 11px;
+  height: 30px;
+  width: 150px;
+  text-align: center;
 }
